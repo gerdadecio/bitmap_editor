@@ -3,7 +3,7 @@ class Bitmap
                 :row,
                 :image
 
-  def initialize(col = 0, row = 0)
+  def initialize(row = 0, col = 0)
     @image = []
     @col = col.to_i
     @row = row.to_i
