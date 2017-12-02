@@ -7,7 +7,7 @@ module Commands
     end
 
     def execute(x, y, colour)
-      bitmap.image[x.to_i][y.to_i] = colour
+      bitmap.image[bitmap.index(y)][bitmap.index(x)] = colour
     end
   end
 end

@@ -14,4 +14,8 @@ class Bitmap
       puts datum.join
     end
   end
+
+  def index(i)
+    i.to_i - 1
+  end
 end
