@@ -1,38 +1,35 @@
 require 'byebug'
 
+require './lib/parser'
+require './lib/bitmap'
+require './lib/commands/clear'
+require './lib/commands/colour'
+require './lib/commands/create'
+require './lib/commands/show'
+
 class BitmapEditor
 
-  def run(file)
-    return puts "please provide correct file" if file.nil? || !File.exists?(file)
+  COMMANDS = {
+    'I' => 'Commands::Create',
+    'C' => 'Commands::Clear',
+    'L' => 'Commands::Colour',
+    'V' => 'Commands::DrawVertical',
+    'H' => 'Commands::DrawHorizontal',
+    'S' => 'Commands::Show'
+  }
 
-    File.open(file).each do |line|
-      line = line.chomp
-      commands = parse_line(line)
-      commands.each do |command, arguments|
-        case command
-        when 'I'
-          puts 'Create'
-        when 'C'
-          puts 'Clear'
-        when 'L'
-          puts 'Colour'
-        when 'V'
-          puts 'Draw Vertical'
-        when 'H'
-          puts 'Draw Horizontal'
-        when 'S'
-          puts 'save!'
-        else
-          puts 'unrecognised command :('
-        end
+  def run(file)
+    bitmap = Bitmap.new
+
+    Parser.new.parse(file).each do |command|
+      key = command.keys.first
+      if COMMANDS[key]
+        data = Module.const_get(COMMANDS[key])
+                     .new(bitmap)
+                     .execute(*command.values.flatten)
+      else
+        puts 'unrecognised command :('
       end
     end
-  end
-
-  def parse_line(line)
-    commands = {}
-    input = line.split
-    commands[input.shift] = input
-    commands
   end
 end
