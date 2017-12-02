@@ -5,6 +5,7 @@ require './lib/bitmap'
 require './lib/commands/clear'
 require './lib/commands/colour'
 require './lib/commands/create'
+require './lib/commands/draw_vertical'
 require './lib/commands/show'
 
 class BitmapEditor
