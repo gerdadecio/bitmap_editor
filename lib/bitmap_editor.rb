@@ -22,16 +22,15 @@ class BitmapEditor
 
   def run(file)
     bitmap = Bitmap.new
-
-    Parser.new.parse(file).each do |command|
+    Parser.new.parse(file).each_with_index do |command, index|
       key = command.keys.first
       if COMMANDS[key]
-        data = Module.const_get(COMMANDS[key])
-                     .new(bitmap)
-                     .execute(*command.values.flatten)
+        data = Module.const_get(COMMANDS[key]).new(bitmap).execute(*command.values.flatten)
       else
-        puts 'unrecognised command :('
+        puts "Unrecognised command at line #{index+1}"
       end
     end
+  rescue => e
+    puts e.message
   end
 end
