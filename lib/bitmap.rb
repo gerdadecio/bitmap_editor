@@ -1,3 +1,5 @@
+require './lib/errors'
+
 class Bitmap
   attr_accessor :col,
                 :row,
@@ -17,5 +19,10 @@ class Bitmap
 
   def index(i)
     i.to_i - 1
+  end
+
+  def validate_image!
+    raise Errors::MissingImage if image.empty?
+    true
   end
 end

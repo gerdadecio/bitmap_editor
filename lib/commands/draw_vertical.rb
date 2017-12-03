@@ -7,6 +7,8 @@ module Commands
     end
 
     def execute(x, y1, y2, colour)
+      bitmap.validate_image!
+
       x = bitmap.index(x)
       first = bitmap.index(y1)
       last = bitmap.index(y2)
