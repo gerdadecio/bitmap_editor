@@ -22,7 +22,6 @@ class Bitmap
   end
 
   def validate_image!
-    raise Errors::MissingImage if image.empty?
-    true
+    raise Errors::MissingImage.new if image.empty?
   end
 end

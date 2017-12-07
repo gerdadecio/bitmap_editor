@@ -3,7 +3,7 @@ require './lib/errors'
 class Parser
 
   def parse(file)
-    raise Errors::IncorrectFile if file.nil? || !File.exists?(file)
+    raise Errors::IncorrectFile.new if file.nil? || !File.exists?(file)
     commands = []
     File.open(file).each do |line|
       line = line.chomp

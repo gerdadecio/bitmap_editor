@@ -25,7 +25,12 @@ class BitmapEditor
     Parser.new.parse(file).each_with_index do |command, index|
       key = command.keys.first
       if COMMANDS[key]
-        data = Module.const_get(COMMANDS[key]).new(bitmap).execute(*command.values.flatten)
+        cmd = Module.const_get(COMMANDS[key]).new(bitmap, *command.values.flatten)
+        if cmd.valid?
+          cmd.execute
+        else
+          puts "#{cmd.error.message} at line #{index+1}"
+        end
       else
         puts "Unrecognised command at line #{index+1}"
       end
