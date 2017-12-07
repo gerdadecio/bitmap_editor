@@ -1,7 +1,4 @@
-require 'byebug'
-require 'bitmap'
 require 'bitmap_editor'
-require 'errors'
 
 describe BitmapEditor do
   let(:bitmap) { Bitmap.new }

@@ -1,6 +1,4 @@
-require 'byebug'
 require 'bitmap'
-require 'errors'
 
 describe Bitmap do
   let(:row) { 5 }

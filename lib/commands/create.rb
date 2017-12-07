@@ -1,5 +1,5 @@
-require './lib/errors'
-require './lib/common'
+require 'errors'
+require 'common'
 
 module Commands
   class Create

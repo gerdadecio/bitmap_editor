@@ -1,4 +1,4 @@
-require './lib/errors'
+require 'errors'
 
 module Commands
   class Colour

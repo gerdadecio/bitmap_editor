@@ -1,5 +1,3 @@
-require './lib/errors'
-
 class Common
   ROW_MIN = 0
   ROW_MAX = 251

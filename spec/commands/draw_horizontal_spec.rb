@@ -1,6 +1,4 @@
-require 'byebug'
 require 'bitmap'
-require 'commands/colour'
 require 'commands/create'
 require 'commands/draw_horizontal'
 

@@ -1,6 +1,6 @@
-require './lib/errors'
-require './lib/common'
-require './lib/commands/colour'
+require 'errors'
+require 'common'
+require 'commands/colour'
 
 module Commands
   class DrawHorizontal

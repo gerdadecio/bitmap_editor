@@ -1,7 +1,5 @@
-require 'byebug'
 require 'bitmap'
 require 'common'
-require 'errors'
 
 describe Common do
   describe 'constants' do

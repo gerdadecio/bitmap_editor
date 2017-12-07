@@ -1,4 +1,3 @@
-require 'byebug'
 require 'bitmap'
 require 'commands/show'
 

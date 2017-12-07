@@ -1,4 +1,3 @@
-require 'byebug'
 require 'errors'
 
 describe Errors::IncorrectFile do
