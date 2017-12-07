@@ -10,12 +10,12 @@ require 'commands/show'
 class BitmapEditor
 
   COMMANDS = {
-    'I' => 'Commands::Create',
-    'C' => 'Commands::Clear',
-    'L' => 'Commands::Colour',
-    'V' => 'Commands::DrawVertical',
-    'H' => 'Commands::DrawHorizontal',
-    'S' => 'Commands::Show'
+    'I' => Commands::Create,
+    'C' => Commands::Clear,
+    'L' => Commands::Colour,
+    'V' => Commands::DrawVertical,
+    'H' => Commands::DrawHorizontal,
+    'S' => Commands::Show
   }
 
   def run(file)
@@ -23,10 +23,8 @@ class BitmapEditor
     Parser.new.parse(file).each_with_index do |command, index|
       key = command.keys.first
       if COMMANDS[key]
-        cmd = Module.const_get(COMMANDS[key]).new(bitmap, *command.values.flatten)
-        if cmd.valid?
-          cmd.execute
-        else
+        cmd = COMMANDS[key].new(bitmap, *command.values.flatten)
+        if !(cmd.valid? && cmd.execute)
           puts "#{cmd.error.message} at line #{index+1}"
         end
       else

@@ -6,19 +6,49 @@ describe BitmapEditor do
   let(:sample_file) { './spec/fixtures/show.txt' }
   let(:commands) {
     {
-      'I' => 'Commands::Create',
-      'C' => 'Commands::Clear',
-      'L' => 'Commands::Colour',
-      'V' => 'Commands::DrawVertical',
-      'H' => 'Commands::DrawHorizontal',
-      'S' => 'Commands::Show'
+      'I' => Commands::Create,
+      'C' => Commands::Clear,
+      'L' => Commands::Colour,
+      'V' => Commands::DrawVertical,
+      'H' => Commands::DrawHorizontal,
+      'S' => Commands::Show
     }
   }
 
   subject { described_class.new }
 
-  describe 'constants' do
+  describe 'COMMANDS' do
     it { expect(described_class::COMMANDS).to eq(commands) }
+    context 'when key is I' do
+      it 'returns Commands::Create' do
+        expect(described_class::COMMANDS['I']).to eq commands['I']
+      end
+    end
+    context 'when key is C' do
+      it 'returns Commands::Clear' do
+        expect(described_class::COMMANDS['C']).to eq commands['C']
+      end
+    end
+    context 'when key is L' do
+      it 'returns Commands::Colour' do
+        expect(described_class::COMMANDS['L']).to eq commands['L']
+      end
+    end
+    context 'when key is V' do
+      it 'returns Commands::DrawVertical' do
+        expect(described_class::COMMANDS['V']).to eq commands['V']
+      end
+    end
+    context 'when key is H' do
+      it 'returns Commands::DrawHorizontal' do
+        expect(described_class::COMMANDS['H']).to eq commands['H']
+      end
+    end
+    context 'when key is S' do
+      it 'returns Commands::Show' do
+        expect(described_class::COMMANDS['S']).to eq commands['S']
+      end
+    end
   end
 
   describe '#run' do
