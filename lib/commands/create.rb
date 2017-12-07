@@ -1,23 +1,29 @@
 require './lib/errors'
+require './lib/common'
 
 module Commands
   class Create
-    attr_accessor :bitmap
+    attr_accessor :bitmap, :row, :col, :error
 
-    def initialize(bitmap)
+    def initialize(bitmap, row, col)
       @bitmap = bitmap
-      validate_bitmap!
+      @error = nil
+      @row = row
+      @col = col
     end
 
-    def execute(row, col)
+    def execute
       bitmap.col, bitmap.row = col.to_i, row.to_i
       bitmap.image = Array.new(bitmap.col) { Array.new(bitmap.row, 'O')}
     end
 
-    private
-
-    def validate_bitmap!
-      raise Errors::InvalidObject unless bitmap.is_a? Bitmap
+    def valid?
+      raise @error = Errors::InvalidObject.new unless bitmap.is_a? Bitmap
+      raise @error = Errors::InvalidType.new(row.class.to_s, 'Integer') unless Common.integer?(row)
+      raise @error = Errors::InvalidType.new(col.class.to_s, 'Integer') unless Common.integer?(col)
+      raise @error = Errors::OutOfRange.new if Common.out_of_range?(row, col)
+      !@error
     end
+
   end
 end
