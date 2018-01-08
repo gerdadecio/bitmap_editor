@@ -1,4 +1,4 @@
-require 'errors'
+require './lib/errors'
 
 class Parser
 

@@ -1,11 +1,11 @@
-require 'parser'
-require 'bitmap'
-require 'commands/clear'
-require 'commands/colour'
-require 'commands/create'
-require 'commands/draw_horizontal'
-require 'commands/draw_vertical'
-require 'commands/show'
+require './lib/parser'
+require './lib/bitmap'
+require './lib/commands/clear'
+require './lib/commands/colour'
+require './lib/commands/create'
+require './lib/commands/draw_horizontal'
+require './lib/commands/draw_vertical'
+require './lib/commands/show'
 
 class BitmapEditor
 
