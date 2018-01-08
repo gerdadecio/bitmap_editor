@@ -17,6 +17,10 @@ class Bitmap
     end
   end
 
+  def colour_at(x,y)
+    image[index(y)][index(x)]
+  end
+
   def index(i)
     i.to_i - 1
   end

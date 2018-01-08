@@ -5,6 +5,7 @@ require './lib/commands/colour'
 require './lib/commands/create'
 require './lib/commands/draw_horizontal'
 require './lib/commands/draw_vertical'
+require './lib/commands/fill'
 require './lib/commands/show'
 
 class BitmapEditor
@@ -12,6 +13,7 @@ class BitmapEditor
   COMMANDS = {
     'I' => Commands::Create,
     'C' => Commands::Clear,
+    'F' => Commands::Fill,
     'L' => Commands::Colour,
     'V' => Commands::DrawVertical,
     'H' => Commands::DrawHorizontal,

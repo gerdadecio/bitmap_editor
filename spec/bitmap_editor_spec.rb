@@ -8,6 +8,7 @@ describe BitmapEditor do
     {
       'I' => Commands::Create,
       'C' => Commands::Clear,
+      'F' => Commands::Fill,
       'L' => Commands::Colour,
       'V' => Commands::DrawVertical,
       'H' => Commands::DrawHorizontal,
@@ -47,6 +48,11 @@ describe BitmapEditor do
     context 'when key is S' do
       it 'returns Commands::Show' do
         expect(described_class::COMMANDS['S']).to eq commands['S']
+      end
+    end
+    context 'when key is F' do
+      it 'returns Commands::Fill' do
+        expect(described_class::COMMANDS['F']).to eq commands['F']
       end
     end
   end
